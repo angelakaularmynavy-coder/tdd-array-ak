@@ -10,8 +10,8 @@
  * getFirst([true,false,true]); // true
  */
 export function getFirst(array) {
-  // TODO
-}
+  return undefined;
+  }
 
 /**
  * @param {T[]} array - an array of elements of type T
@@ -25,11 +25,8 @@ export function getFirst(array) {
  * getLast([true,false,true]); // true
  */
 export function getLast(array) {
-  // TODO
-}
-
-/**
- * @param {T[]} array - an array of elements of type T
+  return array[array.length - 1]; 
+} 
  * @returns {T[]} an array containing the first and last elements of the given array
  * @returns {T[]} an empty array if the input is empty
  * @returns {T[]} the same array if the input only contains one element
@@ -41,10 +38,6 @@ export function getLast(array) {
  * @example
  * getFirstLast([42]); // [42]
  */
-export function getFirstLast(array) {
-  // TODO
-}
-
 /**
  * @param {string} str1 - the first string
  * @param {string} str2 - the second string
@@ -59,9 +52,8 @@ export function getFirstLast(array) {
  * sharesFirstLetter("cat", "dog"); // false
  */
 export function sharesFirstLetter(str1, str2) {
-  // TODO
+  return sharesFirstLetter("", "dog"); // empty guard → false
 }
-
 /**
  * @param {number[]} numbers - an array of numbers
  * @returns {number[]} a new array with each number multiplied by 5
@@ -74,9 +66,8 @@ export function sharesFirstLetter(str1, str2) {
  * quintuple([]); // []
  */
 export function quintuple(numbers) {
-  // TODO
+ return numbers.map((num) => num * 5);
 }
-
 /**
  * There is a general rule for making nouns plural in English:
  * Add "s" to the end of the word, unless the word already ends with "s",
@@ -95,26 +86,13 @@ export function quintuple(numbers) {
  * pluralize([]); // []
  */
 export function pluralize(words) {
-  // TODO
+ return words.map((word) => {
+    if (word.endsWith("s") || word.endsWith("sh") || word.endsWith("ch") || word.endsWith("x") || word.endsWith("z")) {
+      return word + "es";
+    }
+    return word + "s";
+  });
 }
-
-/**
- * @param {boolean[]} attendance - an array representing student attendance
- * - true = student is present
- * - false = student is absent
- * @returns {number} the number of students present
- *
- * @example
- * countAttendance([true, false, true]); // 2
- * @example
- * countAttendance([false, false]); // 0
- * @example
- * countAttendance([]); // 0
- */
-export function countAttendance(attendance) {
-  // TODO
-}
-
 /**
  * @param {string[]} sentence - an array of words
  * @returns {string} the first longest word in the sentence
@@ -128,9 +106,12 @@ export function countAttendance(attendance) {
  * getLongestWord(["a", "ab", "abc"]); // "abc"
  */
 export function getLongestWord(sentence) {
-  // TODO
-}
+ if (sentence.length === 0) return null;
 
+  return sentence.reduce((longest, current) => {
+    return current.length > longest.length ? current : longest;
+  });
+}
 /**
  * @param {string[]} playlist - an array of song titles
  * @param {string} song - the name of a song to find
@@ -145,7 +126,7 @@ export function getLongestWord(sentence) {
  * findSong([], "Midnight Drive"); // -1
  */
 export function findSong(playlist, song) {
-  // TODO
+return playlist.indexOf(song);
 }
 
 /**
@@ -162,5 +143,12 @@ export function findSong(playlist, song) {
  * findSpy([["tree","lamp"],["pigeon","guard"]]); // null
  */
 export function findSpy(map) {
-  // TODO
+ for (let y = 0; y < map.length; y++) {
+    for (let x = 0; x < map[y].length; x++) {
+      if (map[y][x] === "spy") {
+        return [x, y];
+      }
+    }
+  }
+  return null;
 }
